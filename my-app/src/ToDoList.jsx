@@ -18,6 +18,7 @@ export default function Titulo() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setTasks([...Tasks, Task])
         setTask({
             act: '',
             cat: ''
@@ -41,22 +42,22 @@ export default function Titulo() {
             <input
                 type="text"
                 id="Tarea"
-                name="Tarea"
+                name="act"
                 value={Task.act}
                 onChange={handleChange}
             />
-            <label htmlFor="Categoria">Tarea:</label>
+            <label htmlFor="Categoria">Categoría:</label>
             <input
                 type="text"
                 id="Categoria"
-                name="Categoria"
+                name="cat"
                 value={Task.cat}
                 onChange={handleChange}
             />
             <button type="submit">Enviar</button>
         </form>
         <ul>
-            {Tasks.map((element,i) => <li id={i}>{element}  <button onClick={()=>RemoveTask(i)}  >eliminar</button></li>)}
+            {Tasks.map((element,i) => <li id={i}>tarea: {element.act} categoria: {element.cat}  <button onClick={()=>RemoveTask(i)}  >eliminar</button></li>)}
         </ul>
     </div>
     )
